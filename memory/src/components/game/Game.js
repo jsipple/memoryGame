@@ -19,7 +19,7 @@ import vin3 from './images/vin3.jpg'
 import vin4 from './images/vin4.jpg'
 let image = []
 const images  = [jasnah, Kaladin, kaladin2, keisler, sazed, shai, shalash, Shallan, szeth, vasher, vin, vin2, vin3, vin4]
-
+let shuffled;
 
 const styles = StyleSheet.create({
  headShake: {
@@ -42,11 +42,22 @@ class Game extends Component {
   console.log(images[0])
   this.setState({
    images,
-   guessed: []
+   guessed: [],
+   keys: []
   })
+ }
+ shuffle = (e) => {
+  shuffled = this.state.images.sort(() => Math.random() - .5)
+  console.log(shuffled)
+  // issue with this is every time they are loaded their id changes based on their new index could make it x but seems like a bad solution
+  this.setState({
+   images: shuffled
+  })
+  this.guess(e)
  }
  guess = (e) => {
   console.log(e.target.id)
+  console.log(shuffled)
   let id = e.target.id
   if (this.state.guessed.indexOf(id) === -1) {
    let newGuessed = [...this.state.guessed]
@@ -68,7 +79,7 @@ class Game extends Component {
   }
  }
  render() {
-  image = this.state.images.map( (x, i) => <img additionalStyles={{text: {}, frame: {}}} frameClass={this.state.shouldShake ? css(styles.headShake) : ''} onClick={this.guess} id='image' className={this.state.shouldShake ? css(styles.headShake) : ''} src={x} alt='character' />)
+  image = this.state.images.map( (x, i) => <img onClick={this.shuffle} id={x} className={`${this.state.shouldShake ? css(styles.headShake) : ''} image`} src={x} alt='character' />)
   return( 
    <div>
    {image}
