@@ -6,9 +6,11 @@ class Jumbotron extends Component {
   return(
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-  <h2>below will display whether you guessed correctly or not</h2>
+  <h1>Stormlight Archives memory game</h1>
+  <p>click on the images below to begin if you click on an image that you have already clicked your score will reset</p>
     <h1 class="display-4">{this.props.guess}</h1>
-  </div> 
+  </div>
+  <p>score: {this.props.score} high Score: {this.props.maxScore}</p>
 </div>
   )
  }

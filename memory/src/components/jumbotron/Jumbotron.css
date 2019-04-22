@@ -1,0 +1,9 @@
+.jumbotron {
+ background-image: url('./jumbotron-background.jpg');
+ background-size: 100% 100%;
+ color: white;
+ height: 400px;
+}
+p {
+ font-size: 24px;
+}

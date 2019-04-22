@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Navbar from './components/navbar/Navbar'
 import Jumbotron from './components/jumbotron/Jumbotron';
 import Game from './components/game/Game';
 
@@ -36,8 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar score={this.state.score} maxScore={this.state.maxScore} />
-        <Jumbotron guess={this.state.guess} />
+        <Jumbotron guess={this.state.guess} score={this.state.score} maxScore={this.state.maxScore}/>
         <Game updateScore={this.updateScore} incorrect={this.incorrect} /> 
       </div>
     );
